@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Background 1
+  - Background 2
+  - Background 3
   - 
   - 
   - 
@@ -40,4 +40,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background 1
+    uniqueID: 329846731
+    locked: 0
+  - name: Background 2
+    uniqueID: 3867723555
+    locked: 0
+  - name: Background 3
+    uniqueID: 1482331699
+    locked: 0
+  - name: Bush
+    uniqueID: 2334012043
+    locked: 0
+  - name: Tree
+    uniqueID: 884707281
+    locked: 0
+  - name: Player
+    uniqueID: 2785926027
     locked: 0
