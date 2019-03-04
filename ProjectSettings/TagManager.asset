@@ -53,6 +53,9 @@ TagManager:
   - name: Bush
     uniqueID: 2334012043
     locked: 0
+  - name: Tiles
+    uniqueID: 2325647019
+    locked: 0
   - name: Tree
     uniqueID: 884707281
     locked: 0
