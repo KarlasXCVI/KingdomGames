@@ -53,7 +53,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Older game\New Unity Project (3)\Assets\Scripts\CharacterController2D.cs" />
+     <Compile Include="Assets\Older game\New Unity Project (3)\Assets\Scripts\MainCameraPlayer.cs" />
+     <Compile Include="Assets\Older game\New Unity Project (3)\Assets\Scripts\PlayerMovement.cs" />
+     <None Include="Assets\Older game\New Unity Project (3)\ProjectSettings\ProjectVersion.txt" />
+     <None Include="Assets\Older game\New Unity Project (3)\Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Karl/Documents/GitHub/KingdomGames/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
