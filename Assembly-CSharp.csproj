@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraMove.cs" />
      <Compile Include="Assets\Older game\New Unity Project (3)\Assets\Scripts\CharacterController2D.cs" />
      <Compile Include="Assets\Older game\New Unity Project (3)\Assets\Scripts\MainCameraPlayer.cs" />
      <Compile Include="Assets\Older game\New Unity Project (3)\Assets\Scripts\PlayerMovement.cs" />
