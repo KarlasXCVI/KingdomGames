@@ -1,0 +1,50 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+
+public class UpdateMenu : MonoBehaviour {
+
+    [SerializeField]
+    Player PlayerRef;
+    public Text Htext;
+    public Text Dtext;
+    public Text panelscoretext;
+    public GameObject UpgradeCanvas;
+
+    // Use this for initialization
+    void Start () {
+        PlayerRef = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        Htext = GameObject.Find("healthcost").GetComponent<Text>();
+        Dtext = GameObject.Find("damagecost").GetComponent<Text>();
+        panelscoretext = GameObject.Find("PanelScoreText").GetComponent<Text>();
+        UpgradeCanvas = GameObject.Find("Update Panel").GetComponent<GameObject>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (UpgradeCanvas = null)
+        {
+            UpgradeCanvas = GameObject.Find("Update Panel").GetComponent<GameObject>();
+        }
+        Htext.text = "Cost" + PlayerRef.healthcost;
+        Dtext.text = "Cost" + PlayerRef.Damagecost;
+        panelscoretext.text = "" + PlayerRef.score;
+    }
+
+    public void HealthUpgrade()
+    {
+        PlayerRef.HealthUpgrade();
+    }
+
+    public void AttackUpgrade()
+    {
+        PlayerRef.AttackUpgrade();
+    }
+
+    public void Exit()
+    {
+        UpgradeCanvas.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+}

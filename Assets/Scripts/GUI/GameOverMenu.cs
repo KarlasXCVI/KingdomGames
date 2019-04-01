@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour {
 
-
     public GameObject GameOverCanvas;
+
 
     // Use this for initialization
     void Start () {
@@ -29,14 +29,15 @@ public class GameOverMenu : MonoBehaviour {
     public void Retry()
     {
         this.GameOverCanvas.SetActive(false);
-        
+        SceneManager.LoadScene(2);
+        Time.timeScale = 1f;
     }
 
     public void Exit()
     {
         this.GameOverCanvas.SetActive(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
     }
-
 
 }

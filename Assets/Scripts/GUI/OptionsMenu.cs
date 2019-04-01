@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class OptionsMenu : MonoBehaviour
 {
-
-
     public GameObject OptionsMenuCanvas;
     public GameObject MainMenuButtonsContainer;
     public GameObject PausedMenuCanvas;
-
 
     // Use this for initialization
     public void Start ()

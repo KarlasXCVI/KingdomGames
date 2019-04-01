@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Chest
+  - Coin
+  - Death Col
+  - OutOfBounds
+  - BossHealthBar
+  - UpdateTrigger
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -17,7 +24,7 @@ TagManager:
   - Background 2
   - Background 3
   - Player
-  - 
+  - Coin
   - 
   - 
   - 

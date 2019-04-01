@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-
     public GameObject MainMenuCanvas;
     public GameObject OptionsMenuCanvas;
     public GameObject HelpMenuCanvas;
-
 
     // Use this for initialization
     void Start () {
@@ -28,7 +26,6 @@ public class MainMenu : MonoBehaviour {
 
     public void NewGame()
     {
-        this.MainMenuCanvas.SetActive(false);
         SceneManager.LoadScene(2);
     }
 
