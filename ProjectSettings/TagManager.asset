@@ -62,3 +62,15 @@ TagManager:
   - name: Player
     uniqueID: 2785926027
     locked: 0
+  - name: Fence
+    uniqueID: 1867923333
+    locked: 0
+  - name: Stone
+    uniqueID: 736194319
+    locked: 0
+  - name: Flower
+    uniqueID: 2005584999
+    locked: 0
+  - name: Green
+    uniqueID: 4068021395
+    locked: 0
