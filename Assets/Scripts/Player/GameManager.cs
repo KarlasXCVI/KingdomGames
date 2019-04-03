@@ -41,17 +41,6 @@ public class GameManager : MonoBehaviour
     {
     }
 
-    void SetGameOver()
-    {
-
-    }
-
-    // game over
-    public bool isGameOver()
-    {
-        return gameover;
-    }
-
     // game over
     public bool isYouwin()
     {

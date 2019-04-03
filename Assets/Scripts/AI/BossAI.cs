@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class BossAI : MonoBehaviour {
 
     [SerializeField]
-    public int AIhealth = 100;
-    public int MaxAIhealth = 100;
+    private int Aihealth;
+    private int MaxAIhealth;
     BossCall BossCallRef;
 
     public Text Ainametext;
@@ -21,15 +21,19 @@ public class BossAI : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start() {
 
+        Aihealth = 500;
+        MaxAIhealth = 500;
         SettingUpAIHealth();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
 
         SettingUpAIUI();
+
+        SettingUpAIHealth();
     }
 
     void SettingUpAIUI()
@@ -54,7 +58,23 @@ public class BossAI : MonoBehaviour {
 
     void SettingUpAIHealth()
     {
-        HealthBar.value = AIhealth;
+        HealthBar.value = Aihealth;
         HealthBar.maxValue = MaxAIhealth;
+    }
+
+    public void takedamage(int damage)
+    {
+        Aihealth -= damage;
+        if (Aihealth <= 0)
+        {
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        //Instantiate(bulletPab, shootingPoint.position, shootingPoint.rotation);
+        BossCallRef.DeatciveBossUI();
+        Destroy(this.gameObject);
     }
 }

@@ -6,14 +6,26 @@ public class DialogueTrigger : MonoBehaviour {
 
 
     public Dialogue dialogue;
+    public bool activated;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Use this for initialization
+    void Start()
+    {
+        activated = false;
+    }
+
+    public void TriggerDialogue()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player" && activated == false)
+        {
+            activated = true;
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        }
+    }
 }

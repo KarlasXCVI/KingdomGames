@@ -17,7 +17,6 @@ public class DialogueManager : MonoBehaviour {
 
         sentences = new Queue<string>();
 
-
     }
 	
 	// Update is called once per frame

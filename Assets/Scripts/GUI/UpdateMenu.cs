@@ -10,6 +10,9 @@ public class UpdateMenu : MonoBehaviour {
     public Text panelscoretext;
     public GameObject UpgradeCanvas;
 
+    GameObject player;
+
+
     // Use this for initialization
     void Start () {
         PlayerRef = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -17,6 +20,7 @@ public class UpdateMenu : MonoBehaviour {
         Dtext = GameObject.Find("damagecost").GetComponent<Text>();
         panelscoretext = GameObject.Find("PanelScoreText").GetComponent<Text>();
         UpgradeCanvas = GameObject.Find("Update Panel").GetComponent<GameObject>();
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -44,7 +48,8 @@ public class UpdateMenu : MonoBehaviour {
     public void Exit()
     {
         UpgradeCanvas.SetActive(false);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
+        player.GetComponent<PlayerMovement>().enabled = true;
     }
 
 }

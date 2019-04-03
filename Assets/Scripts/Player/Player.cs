@@ -8,11 +8,12 @@ public class Player : MonoBehaviour {
     public static int Maxhealth = 100;
     public static int Currenthealth = 100;
     public static int stamina = 100;
-    public static int AttackDamage;
     public int score = 0;
     public int healthcost;
     public int Damagecost;
     public bool UpgradeMenuOn;
+
+    public int AttackDamage;
 
     public Text scoretext;
     public Text notificationtext;
@@ -22,10 +23,6 @@ public class Player : MonoBehaviour {
     public Slider StaminaBar;
     public GameObject gameoverMenuCanvas;
 
-    private float timeBtwAttack;
-    public float starttimeBTAttack;
-    public Transform attackPos;
-    public float attackRange;
     //public LayerMask Em
 
     ChestLoot ChestLootRef;
@@ -52,19 +49,6 @@ public class Player : MonoBehaviour {
     {
         UpdateText();
         CurrenthealthUpdate();     
-        
-        if (timeBtwAttack <= 0)
-        {
-            if (Input.GetKey(KeyCode.Y))
-            {
-                Collider2D[] enemiestodamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, 0);
-            }
-            timeBtwAttack = starttimeBTAttack;
-        }
-        else
-        {
-            timeBtwAttack -= Time.deltaTime;
-        }
         
         //// is the player dead?
         if (Currenthealth <= 0)
@@ -98,17 +82,12 @@ public class Player : MonoBehaviour {
             Death();
         }
 
-        if (other.gameObject.tag == "UpdateTrigger")
+        if (other.gameObject.tag == "UpdateTrigger" && Input.GetKey(KeyCode.R))
         {
 
             notificationtext.text = "Press E to open the update panel";
+            UpgradeRef.SpawnPanel();
 
-            if (Input.GetKey(KeyCode.E))
-            {
-
-                UpgradeMenuOn = true;
-                //UpgradeRef.SpawnPanel();
-            }
         }
 
         if (other.gameObject.tag == "Chest")
@@ -127,20 +106,6 @@ public class Player : MonoBehaviour {
                 }
             }
         }
-    }
-
-    // collided with something?
-    void OnTriggerStay2D(Collider2D other)
-    {
-
-        //if (other.tag=="Fire")
-        //{
-        //    if (Time.time-damagetime>1)
-        //    {
-        //        TakeDamage(10);
-        //        damagetime = Time.time;
-        //    }
-        //}
     }
 
     void OnTriggerExit2D(Collider2D other)

@@ -16,6 +16,12 @@ public class UpgradeTrigger : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+
+        if (PlayerRef.UpgradeMenuOn == true)
+        {
+            SpawnPanel();
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -23,19 +29,21 @@ public class UpgradeTrigger : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             PlayerRef.notificationtext.text = "Press E to open the update panel";
-            SpawnPanel();
+            //SpawnPanel();
 
 
-            //if (PlayerRef.UpgradeMenuOn == true)
-            //{
-            //    SpawnPanel();
-            //}
         }
     }
 
     public void SpawnPanel()
     {
         this.UpgradeCanvas.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
+    }
+
+    public void RemovePanel()
+    {
+        this.UpgradeCanvas.SetActive(false);
+        //Time.timeScale = 0f;
     }
 }

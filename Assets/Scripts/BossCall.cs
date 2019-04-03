@@ -6,6 +6,7 @@ public class BossCall : MonoBehaviour {
 
     [SerializeField]
     public bool activated;
+    public bool BossAlive;
 
     public GameObject BossPrefab;
     public Transform SpawnPos;
@@ -14,13 +15,16 @@ public class BossCall : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        activated = false;
+        BossAlive = false;
     }
 
     // Update is called once per frame
     void Update () {
-		
-	}
+
+
+            
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -35,8 +39,12 @@ public class BossCall : MonoBehaviour {
     {
         Instantiate(BossPrefab, SpawnPos.position, SpawnPos.rotation);
         AiCanvas.SetActive(true);
-        //Destroy(SpawnPos, 1);
         //GetComponent<AudioSource>().PlayOneShot(SummonSound);
+    }
+
+    public void DeatciveBossUI()
+    {
+        AiCanvas.SetActive(false);
     }
 
 }
