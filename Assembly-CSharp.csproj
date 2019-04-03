@@ -65,6 +65,7 @@
     <Compile Include="Assets\Older game\New Unity Project (3)\Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Older game\New Unity Project (3)\Assets\Scripts\MainCameraPlayer.cs" />
     <Compile Include="Assets\Older game\New Unity Project (3)\Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Parallax.cs" />
     <Compile Include="Assets\Scripts\AI\AIBehaviour.cs" />
     <Compile Include="Assets\Scripts\AI\BasicAI.cs" />
     <Compile Include="Assets\Scripts\AI\BossAI.cs" />
@@ -85,17 +86,56 @@
     <Compile Include="Assets\Scripts\UpdateMenu.cs" />
     <None Include="Assets\Older game\New Unity Project (3)\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\Older game\New Unity Project (3)\Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
+    <Reference Include="Unity.2D.Animation.Runtime">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect.Editor">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Editor">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.IK.Editor">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Runtime">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Runtime">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Editor">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Triangle.Runtime">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.Triangle.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Editor">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>H:/Data/GitHub/KingdomGames/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

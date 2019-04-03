@@ -50,27 +50,36 @@ TagManager:
   - name: Background 3
     uniqueID: 1482331699
     locked: 0
-  - name: Bush
-    uniqueID: 2334012043
+  - name: 'Grey Town '
+    uniqueID: 3959930163
     locked: 0
-  - name: Tiles
-    uniqueID: 2325647019
+  - name: Town
+    uniqueID: 1596889785
     locked: 0
-  - name: Tree
-    uniqueID: 884707281
-    locked: 0
-  - name: Player
-    uniqueID: 2785926027
+  - name: Green Grass
+    uniqueID: 214578723
     locked: 0
   - name: Fence
     uniqueID: 1867923333
     locked: 0
-  - name: Stone
-    uniqueID: 736194319
+  - name: Tree
+    uniqueID: 2334012043
+    locked: 0
+  - name: Tree
+    uniqueID: 884707281
     locked: 0
   - name: Flower
     uniqueID: 2005584999
     locked: 0
+  - name: Stone
+    uniqueID: 736194319
+    locked: 0
   - name: Green
     uniqueID: 4068021395
+    locked: 0
+  - name: Tiles
+    uniqueID: 823249979
+    locked: 0
+  - name: Player
+    uniqueID: 2785926027
     locked: 0
