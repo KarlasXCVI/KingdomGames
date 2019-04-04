@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 831096759}
   - component: {fileID: 831096761}
   m_Layer: 5
-  m_Name: Press Button vText
+  m_Name: Press Button Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,7 +384,7 @@ Animator:
   m_GameObject: {fileID: 831096757}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c63a5eda2acb27249adb68c7055caabe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 563479a7d436e1947b3f23aaa746899e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -694,6 +694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2fbf1c909a214478a9283c8701c724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BlinkingAnimator: {fileID: 831096761}
+  Ispressed: 0
 --- !u!224 &2112353462
 RectTransform:
   m_ObjectHideFlags: 0

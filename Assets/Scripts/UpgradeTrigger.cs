@@ -30,20 +30,16 @@ public class UpgradeTrigger : MonoBehaviour {
         {
             PlayerRef.notificationtext.text = "Press E to open the update panel";
             //SpawnPanel();
-
-
         }
     }
 
     public void SpawnPanel()
     {
         this.UpgradeCanvas.SetActive(true);
-        //Time.timeScale = 0f;
     }
 
     public void RemovePanel()
     {
         this.UpgradeCanvas.SetActive(false);
-        //Time.timeScale = 0f;
     }
 }

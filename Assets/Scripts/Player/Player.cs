@@ -5,28 +5,24 @@ using Random = UnityEngine.Random;
 public class Player : MonoBehaviour {
 
     [SerializeField]
-    public static int Maxhealth = 100;
-    public static int Currenthealth = 100;
-    public static int stamina = 100;
+    public static int Maxhealth = 4;
+    public static int Magic = 100;
+    public int Currenthealth = 4;
     public int score = 0;
     public int healthcost;
     public int Damagecost;
-    public bool UpgradeMenuOn;
-
     public int AttackDamage;
-
-    public Text scoretext;
-    public Text notificationtext;
-    public Text CurrenthealthDisplay;
-    public Text MaxhealthDisplay;
-    public Slider CurrenthealthBar;
-    public Slider StaminaBar;
-    public GameObject gameoverMenuCanvas;
-
-    //public LayerMask Em
+    public bool UpgradeMenuOn;
+    private bool paused;
 
     ChestLoot ChestLootRef;
     UpgradeTrigger UpgradeRef;
+
+    public Text scoretext;
+    public Text notificationtext;
+    public Slider MagicBar;
+    public GameObject gameoverMenuCanvas;
+    public GameObject PauseMenuCanvas;
 
     // Use this for initialization
     void Start ()
@@ -38,6 +34,7 @@ public class Player : MonoBehaviour {
         Damagecost = 3;
         AttackDamage = 20;
         UpgradeMenuOn = false;
+        paused = false;
 
         //Functions
         SettingUpUI();
@@ -48,7 +45,32 @@ public class Player : MonoBehaviour {
     void Update()
     {
         UpdateText();
-        CurrenthealthUpdate();     
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Time.timeScale = 0;
+
+            if (paused == false)
+            {
+                paused = true;
+                
+                PauseMenuCanvas.SetActive(true);
+            }
+            else if (paused == true)
+            {
+                paused = false;
+                //paused = !paused;
+                Time.timeScale = 1;
+                PauseMenuCanvas.SetActive(false);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+
+            Currenthealth--;
+        }
+
         
         //// is the player dead?
         if (Currenthealth <= 0)
@@ -60,9 +82,7 @@ public class Player : MonoBehaviour {
     void ReduceCurrenthealth(float amount)
     {
         // take damage
-        Currenthealth = Currenthealth - 20;
-        CurrenthealthBar.value = Currenthealth;
-        // is the player dead?
+        Currenthealth = Currenthealth - 1;
     }
 
     // Player take damage
@@ -84,10 +104,8 @@ public class Player : MonoBehaviour {
 
         if (other.gameObject.tag == "UpdateTrigger" && Input.GetKey(KeyCode.R))
         {
-
             notificationtext.text = "Press E to open the update panel";
             UpgradeRef.SpawnPanel();
-
         }
 
         if (other.gameObject.tag == "Chest")
@@ -119,29 +137,18 @@ public class Player : MonoBehaviour {
 
     void SettingUpUI()
     {
-        CurrenthealthDisplay = GameObject.Find("CurrentHealthDisplay").GetComponent<Text>();
-        MaxhealthDisplay = GameObject.Find("MaxhealthDisplay").GetComponent<Text>();
         scoretext = GameObject.Find("ScoreText").GetComponent<Text>();
         notificationtext = GameObject.Find("notificationtext").GetComponent<Text>();
-        CurrenthealthBar = GameObject.Find("HealthBar").GetComponent<Slider>();
-        StaminaBar = GameObject.Find("StaminaBar").GetComponent<Slider>();
+        MagicBar = GameObject.Find("StaminaBar").GetComponent<Slider>();
         gameoverMenuCanvas = GameObject.Find("Game Over").GetComponent<GameObject>();
 
-        CurrenthealthBar.maxValue = Maxhealth;
-        CurrenthealthBar.value = Currenthealth;
-    }
-
-    void CurrenthealthUpdate()
-    {
-        CurrenthealthBar.value = Currenthealth;
-        CurrenthealthBar.maxValue = Maxhealth;
+        MagicBar.maxValue = Magic;
+        MagicBar.value = 0;
     }
 
     void UpdateText()
     {
         scoretext.text = score.ToString();
-        CurrenthealthDisplay.text = Currenthealth.ToString();
-        MaxhealthDisplay.text = Maxhealth.ToString();
     }
 
     public void UpdateOpenText()
@@ -151,7 +158,7 @@ public class Player : MonoBehaviour {
 
     public void UpdateBlankText()
     {
-        notificationtext.text = "";
+        notificationtext.text = " ";
     }
 
     void Death()
@@ -165,7 +172,7 @@ public class Player : MonoBehaviour {
     {
         if (score >= healthcost)
         {
-            Maxhealth = Maxhealth + 60;
+            Maxhealth = Maxhealth + 1;
             score= score - healthcost;
         }
     }

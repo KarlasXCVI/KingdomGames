@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class BossCall : MonoBehaviour {
 
-
     [SerializeField]
     public bool activated;
     public bool BossAlive;
@@ -21,9 +20,7 @@ public class BossCall : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
-
-            
+    
     }
 
     void OnTriggerEnter2D(Collider2D other)

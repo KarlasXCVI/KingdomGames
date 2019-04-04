@@ -5,21 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class AnyButton : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    public Animator BlinkingAnimator;
 
+    // Use this for initialization
+    void Start () {
+        BlinkingAnimator.SetBool("IsPressed", false);
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (Input.anyKeyDown)
         {
-            Invoke("LoadMainMenu", 5);
+            Pressed();
         }
-		
 	}
+
+    void Pressed()
+    {
+        BlinkingAnimator.SetBool("IsPressed", true);
+        Invoke("LoadMainMenu", 3);
+    }
 
     void LoadMainMenu()
     {

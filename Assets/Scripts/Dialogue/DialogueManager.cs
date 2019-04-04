@@ -16,13 +16,12 @@ public class DialogueManager : MonoBehaviour {
 	void Start () {
 
         sentences = new Queue<string>();
-
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-}
+    }
 
     public void StartDialogue(Dialogue dialogue)
     {
