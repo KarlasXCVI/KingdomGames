@@ -18,7 +18,7 @@ TagManager:
   - Background 3
   - Tiles
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -82,6 +82,9 @@ TagManager:
     locked: 0
   - name: Door
     uniqueID: 2710363597
+    locked: 0
+  - name: Enemy
+    uniqueID: 380575637
     locked: 0
   - name: Tiles
     uniqueID: 823249979

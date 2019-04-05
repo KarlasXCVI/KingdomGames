@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private float canJump = 0f;
 
+    //bool attack = false;
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +38,14 @@ public class PlayerMovement : MonoBehaviour {
             canJump = Time.time + 3f;
         }
 
+        /*if(Input.GetButtonDown("Attack"))
+        {
+            attack = true;
+            animator.SetBool("IsAttacking", true);
+        } else if(Input.GetButtonUp("Attack"))
+        {
+            attack = false;
+        }*/
 
 
     }
@@ -49,7 +58,10 @@ public class PlayerMovement : MonoBehaviour {
     private void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+        
+
         jump = false;
+        
 
 
 
