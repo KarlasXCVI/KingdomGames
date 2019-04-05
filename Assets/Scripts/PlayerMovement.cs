@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour {
 
     bool jump = false;
 
+    private float canJump = 0f;
+
 
 	// Use this for initialization
 	void Start () {
@@ -28,10 +30,11 @@ public class PlayerMovement : MonoBehaviour {
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && Time.time > canJump)
         {
             jump = true;
             animator.SetBool("IsJumping", true);
+            canJump = Time.time + 3f;
         }
 
 
