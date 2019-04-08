@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour {
 
-    [SerializeField]
     private float timeBtwAttack;
     public float starttimeBTAttack;
-    public float attackRange;
-    public bool left;
-    public bool right;
-
+    private bool left;
+    private bool right;
 
     public Transform shootingPoint;
     public GameObject bulletPab;
@@ -19,9 +16,8 @@ public class Shooting : MonoBehaviour {
     void Start () {
         left = false;
         right = true;
-
         starttimeBTAttack = 2;
-
+        timeBtwAttack = starttimeBTAttack;
         //if (timeBtwAttack <= 0)
         //{
         //    if (Input.GetKey(KeyCode.Y))
@@ -40,10 +36,20 @@ public class Shooting : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (Input.GetKeyDown(KeyCode.E))
+
+        if (timeBtwAttack <= 0)
         {
-            shoot();
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                shoot();
+            }
+            timeBtwAttack = starttimeBTAttack;
         }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+        }
+
 
 
         if (left == false)
@@ -54,10 +60,7 @@ public class Shooting : MonoBehaviour {
                 right = false;
                 shootingPoint.transform.Rotate(0f, 180f, 0f);
             }
-        }
-
-        
-        if (left == true)
+        }else if (left == true)
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -66,8 +69,6 @@ public class Shooting : MonoBehaviour {
                 shootingPoint.transform.Rotate(0f, 180f, 0f);
             }
         }
-
-
 
         //if (timeBtwAttack <= 0)
         //{
@@ -88,5 +89,4 @@ public class Shooting : MonoBehaviour {
     {
         Instantiate(bulletPab, shootingPoint.position, shootingPoint.rotation);
     }
-
 }

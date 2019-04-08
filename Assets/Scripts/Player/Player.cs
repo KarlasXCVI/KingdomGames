@@ -4,37 +4,39 @@ using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour {
 
-    [SerializeField]
-    public static int Maxhealth = 4;
-    public static int Magic = 100;
-    public int Currenthealth = 4;
-    public int score = 0;
-    public int healthcost;
-    public int Damagecost;
-    public int AttackDamage;
-    public bool UpgradeMenuOn;
+    private int Maxhealth = 5;
     private bool paused;
 
-    ChestLoot ChestLootRef;
+    [SerializeField]
+    public bool Ishurt;
+    public int Magic = 100;
+    public int Currenthealth;
+    public int score = 0;
+    public int AttackDamage;
+    public bool UpgradeMenuOn;
+    public bool CollectedKey;
+
+    //ChestLoot ChestLootRef;
     UpgradeTrigger UpgradeRef;
 
-    public Text scoretext;
+    private Text scoretext;
     public Text notificationtext;
-    public Slider MagicBar;
+    private Slider MagicBar;
     public GameObject gameoverMenuCanvas;
     public GameObject PauseMenuCanvas;
 
     // Use this for initialization
     void Start ()
     {
-        ChestLootRef = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestLoot>();
+        //ChestLootRef = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestLoot>();
         UpgradeRef = GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeTrigger>();
 
-        healthcost = 2;
-        Damagecost = 3;
+        Currenthealth = Maxhealth;
         AttackDamage = 20;
         UpgradeMenuOn = false;
         paused = false;
+        Ishurt = false;
+        CollectedKey = false;
 
         //Functions
         SettingUpUI();
@@ -71,7 +73,11 @@ public class Player : MonoBehaviour {
             Currenthealth--;
         }
 
-        
+        if (Ishurt == true)
+        {
+            Invoke("Tookdamage", 2);
+        }
+
         //// is the player dead?
         if (Currenthealth <= 0)
         {
@@ -90,7 +96,6 @@ public class Player : MonoBehaviour {
     {
         //// take damage
         //Currenthealth = Currenthealth - amount;
-        if (Currenthealth < 0) Currenthealth = 0;
     }
 
     // enter trigger zone of something
@@ -102,27 +107,36 @@ public class Player : MonoBehaviour {
             Death();
         }
 
-        if (other.gameObject.tag == "UpdateTrigger" && Input.GetKey(KeyCode.R))
-        {
-            notificationtext.text = "Press E to open the update panel";
-            UpgradeRef.SpawnPanel();
-        }
+        //if (other.gameObject.tag == "UpdateTrigger")
+        //{
+        //    notificationtext.text = "Press E to open the update panel";
 
-        if (other.gameObject.tag == "Chest")
-        {
-            UpdateOpenText();
+        //    if (Input.GetKey(KeyCode.R))
+        //    {
+        //        UpgradeMenuOn = true;
+        //    }
+        //}
+
+        //if (other.gameObject.tag == "Chest")
+        //{
+        //    UpdateOpenText();
      
-            if (ChestLootRef.Ischestopen == false)
-            {
-                if (Input.GetKey(KeyCode.E))
-                {
-                    //Destroy(other.gameObject);
-                    //other.gameObject.GetComponent<ChestLoot>().Ischestopen = true;
-                    ChestLootRef.Ischestopen = true;
-                    score++;
-                    UpdateBlankText();
-                }
-            }
+        //    if (ChestLootRef.Ischestopen == false)
+        //    {
+        //        if (Input.GetKey(KeyCode.E))
+        //        {
+        //            //Destroy(other.gameObject);
+        //            //other.gameObject.GetComponent<ChestLoot>().Ischestopen = true;
+        //            ChestLootRef.Ischestopen = true;
+        //            score++;
+        //            UpdateBlankText();
+        //        }
+        //    }
+        //}
+
+        if (other.gameObject.tag == "EnemyBullet")
+        {
+
         }
     }
 
@@ -133,6 +147,11 @@ public class Player : MonoBehaviour {
         {
             UpdateBlankText();
         }
+
+        //if (other.gameObject.tag == "UpdateTrigger")
+        //{
+        //    UpdateBlankText();
+        //}
     }
 
     void SettingUpUI()
@@ -151,6 +170,11 @@ public class Player : MonoBehaviour {
         scoretext.text = score.ToString();
     }
 
+    void Tookdamage()
+    {
+        Ishurt = false;
+    }
+
     public void UpdateOpenText()
     {
         notificationtext.text = "Press E to open the chest";
@@ -163,26 +187,9 @@ public class Player : MonoBehaviour {
 
     void Death()
     {
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
         gameoverMenuCanvas.SetActive(true);
-        Destroy(gameObject, 2);
-    }
-
-    public void HealthUpgrade()
-    {
-        if (score >= healthcost)
-        {
-            Maxhealth = Maxhealth + 1;
-            score= score - healthcost;
-        }
-    }
-
-    public void AttackUpgrade()
-    {
-        if (score >= Damagecost)
-        {
-            AttackDamage = AttackDamage + 10;
-            score = score - Damagecost;
-        }
+        //GameManager.KillPlayer(this);
+        //Destroy(gameObject, 1);
     }
 }

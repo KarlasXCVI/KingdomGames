@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour {
 
-
     public Text nameText;
     public Text dialogueText;
 
     public Animator animator;
     private Queue<string> sentences;
+
+
+    void Awake()
+    {
+
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -65,5 +70,19 @@ public class DialogueManager : MonoBehaviour {
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        Time.timeScale = 1;
+    }
+
+
+    void Find()
+    {
+        if ((nameText == null))
+        {
+            nameText = GameObject.Find("Name").GetComponent<Text>();
+        }
+        if ((dialogueText == null))
+        {
+            dialogueText = GameObject.Find("Dialogue").GetComponent<Text>();
+        }
     }
 }

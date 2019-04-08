@@ -8,7 +8,6 @@ public class DialogueTrigger : MonoBehaviour {
     public Dialogue dialogue;
     public bool activated;
 
-
     // Use this for initialization
     void Start()
     {
@@ -24,8 +23,21 @@ public class DialogueTrigger : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player" && activated == false)
         {
-            activated = true;
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            Invoke("PauseToRead", 1);
         }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            activated = true;
+        }
+    }
+
+    void PauseToRead()
+    {
+        Time.timeScale = 0;
     }
 }

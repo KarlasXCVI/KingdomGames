@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour {
     public Rigidbody2D rb;
     Player PlayerRef;
     BossAI Boss;
+    BasicAI Enemy;
 
     // Use this for initialization
     void Start () {
@@ -30,10 +31,17 @@ public class Bullet : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         BossAI Boss = other.GetComponent<BossAI>();
+        BasicAI Enemy = other.GetComponent<BasicAI>();
 
         if (other.gameObject.tag == "Boss")
         {
             Boss.takedamage(damage);
+            Destroy(this.gameObject);
+        }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            Enemy.takedamage(damage);
             Destroy(this.gameObject);
         }
     }

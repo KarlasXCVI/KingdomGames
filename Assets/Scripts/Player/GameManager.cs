@@ -1,14 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int highscore = 1000;
+    public static GameManager gm;
+    public Player PlayerRef;
 
-    public bool gameover = false;
-    public GameObject gameoverMenuCanvas;
-    public bool youwin = false;
+    public Transform player;
+    public Transform spawnPoint;
+    public float spawnDelay = 2f;
+
+    public Transform spawnPrefab;
+
+    public bool gameover;
+    public bool youwin;
     public Text youwintext;
+    public static GameObject gameoverMenuCanvas;
 
     // This is a C# property - the code below isn't using it
     // as it is accessing the private static instance directly.
@@ -33,18 +42,50 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
-
         DontDestroyOnLoad(gameObject);
+
+        if ((PlayerRef == null))
+        {
+            PlayerRef = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        }
+
+        if ((gameoverMenuCanvas == null))
+        {
+            gameoverMenuCanvas = GameObject.Find("Game Over").GetComponent<GameObject>();
+        }
+        if (gm == null)
+            gm = GetComponent<GameManager>();
     }
 
     void Start()
     {
+        gameover = false;
+        youwin = false;
     }
 
-    // game over
-    public bool isYouwin()
+    public IEnumerator RespawnPlayer()
     {
-        return youwin;
+        GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(spawnDelay);
+        Instantiate(player, spawnPoint.position, spawnPoint.rotation);
+        Transform clone = (Transform)Instantiate(spawnPrefab, spawnPoint.position, spawnPoint.rotation);
+
+        Destroy(clone.gameObject, 3f);
+    }
+
+    public static void KillPlayer(Player player)
+    {
+        Destroy(player.gameObject);
+        Time.timeScale = 0f;
+        gameoverMenuCanvas.SetActive(true);
+        gm.StartCoroutine(gm.RespawnPlayer());
+    }
+
+
+    public static void Create(GameOverMenu GameOverMenu)
+    {
+        //gameoverMenuCanvas.SetActive(true);
+        gm.StartCoroutine(gm.RespawnPlayer());
     }
 
     public void SetYouWin()
@@ -53,10 +94,13 @@ public class GameManager : MonoBehaviour
         youwin = true;
     }
 
-    //void gameover()
-    //{
-    //    gameoverMenuCanvas.SetActive(true);
-    //    Time.timeScale = 0f;
-    //}
-
+    void Death()
+    {
+        if (PlayerRef.Currenthealth <= 0)
+        {
+            Time.timeScale = 0f;
+            gameoverMenuCanvas.SetActive(true);
+            Destroy(gameObject, 2);
+        }
+    }
 }
