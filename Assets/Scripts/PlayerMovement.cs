@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             jump = true;
             animator.SetBool("IsJumping", true);
-            canJump = Time.time + 3f;
+            canJump = Time.time + 0.5f;
         }
 
         /*if(Input.GetButtonDown("Attack"))
