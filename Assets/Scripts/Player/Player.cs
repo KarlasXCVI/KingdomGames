@@ -24,12 +24,20 @@ public class Player : MonoBehaviour {
     private Slider MagicBar;
     public GameObject gameoverMenuCanvas;
     public GameObject PauseMenuCanvas;
+    private UpgradeTrigger UpgradeTRef;
 
     // Use this for initialization
     void Start ()
     {
         //ChestLootRef = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestLoot>();
         UpgradeRef = GameObject.FindGameObjectWithTag("Player").GetComponent<UpgradeTrigger>();
+
+        Time.timeScale = 1f;
+
+        if ((UpgradeTRef == null))
+        {
+            UpgradeTRef = GameObject.FindWithTag("UpgradeTRef").GetComponent<UpgradeTrigger>();
+        }
 
         Currenthealth = Maxhealth;
         AttackDamage = 20;
@@ -48,7 +56,7 @@ public class Player : MonoBehaviour {
     {
         UpdateText();
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 0;
 
@@ -67,11 +75,11 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
+        //if (Input.GetKeyDown(KeyCode.U))
+        //{
 
-            Currenthealth--;
-        }
+        //    Currenthealth--;
+        //}
 
         if (Ishurt == true)
         {
@@ -107,32 +115,15 @@ public class Player : MonoBehaviour {
             Death();
         }
 
-        //if (other.gameObject.tag == "UpdateTrigger")
-        //{
-        //    notificationtext.text = "Press E to open the update panel";
+        if (other.gameObject.tag == "UpgradeTRef")
+        {
+            notificationtext.text = "Press E to open the update panel";
 
-        //    if (Input.GetKey(KeyCode.R))
-        //    {
-        //        UpgradeMenuOn = true;
-        //    }
-        //}
-
-        //if (other.gameObject.tag == "Chest")
-        //{
-        //    UpdateOpenText();
-     
-        //    if (ChestLootRef.Ischestopen == false)
-        //    {
-        //        if (Input.GetKey(KeyCode.E))
-        //        {
-        //            //Destroy(other.gameObject);
-        //            //other.gameObject.GetComponent<ChestLoot>().Ischestopen = true;
-        //            ChestLootRef.Ischestopen = true;
-        //            score++;
-        //            UpdateBlankText();
-        //        }
-        //    }
-        //}
+            if (Input.GetKey(KeyCode.E))
+            {
+                UpgradeTRef.SpawnPanel();
+            }
+        }
 
         if (other.gameObject.tag == "EnemyBullet")
         {
@@ -165,8 +156,10 @@ public class Player : MonoBehaviour {
         MagicBar.value = 0;
     }
 
+    // A function that is used to update the player score on screen
     void UpdateText()
     {
+        // score text equals the score int stored the player script that is convert to text by ToString
         scoretext.text = score.ToString();
     }
 

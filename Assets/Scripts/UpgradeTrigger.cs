@@ -48,12 +48,6 @@ public class UpgradeTrigger : MonoBehaviour {
             SpawnPanel();
             Invoke("PauseToRead", 1);
             Invoke("Clear", 1);
-                
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                //PlayerRef.UpgradeMenuOn = true;
-                SpawnPanel();
-            }
         }
     }
 

@@ -18,6 +18,8 @@ public class Coin : MonoBehaviour {
         {
             PlayerRef = GameObject.FindWithTag("PlayerRef").GetComponent<Player>();
         }
+
+        CoinCollectSound = GetComponent<AudioClip>();
     }
 
     // Update is called once per frame

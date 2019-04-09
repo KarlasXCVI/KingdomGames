@@ -14,7 +14,6 @@ public class DialogueManager : MonoBehaviour {
 
     void Awake()
     {
-
     }
 
 	// Use this for initialization

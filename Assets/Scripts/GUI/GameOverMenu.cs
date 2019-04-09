@@ -48,12 +48,12 @@ public class GameOverMenu : MonoBehaviour {
         //Invoke("respawn", 2);
         this.GameOverCanvas.SetActive(false);
         //GameManager.Create(this);
+        SceneManager.LoadScene(2);
         Time.timeScale = 1f;
-        //SceneManager.LoadScene(2);
-        PlayerRef.Currenthealth = 3;
-        Player.position = respawnPoint.position;
+        //PlayerRef.Currenthealth = 3;
+        //Player.position = respawnPoint.position;
         // play audio
-        //GetComponent<AudioSource>().PlayOneShot(RespawnSound);
+        GetComponent<AudioSource>().PlayOneShot(RespawnSound);
     }
 
     public void Exit()
